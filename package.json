@@ -1,0 +1,23 @@
+{
+  "name": "my_react",
+  "version": "1.0.0",
+  "description": "new react app without create react app",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gargtanisha11/my_react.git"
+  },
+  "keywords": [
+    "ok",
+    "react"
+  ],
+  "author": "Tanisha Grag",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gargtanisha11/my_react/issues"
+  },
+  "homepage": "https://github.com/Gargtanisha11/my_react#readme"
+}
