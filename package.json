@@ -2,7 +2,7 @@
   "name": "my_react",
   "version": "1.0.0",
   "description": "new react app without create react app",
-  "main": "App.js",
+  
   "scripts": {
     "test": "jest"
   },
@@ -10,14 +10,19 @@
     "type": "git",
     "url": "git+https://github.com/Gargtanisha11/my_react.git"
   },
-  "keywords": [
-    "ok",
-    "react"
-  ],
+  "keywords": [],
   "author": "Tanisha Grag",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Gargtanisha11/my_react/issues"
   },
-  "homepage": "https://github.com/Gargtanisha11/my_react#readme"
+  "homepage": "https://github.com/Gargtanisha11/my_react#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
