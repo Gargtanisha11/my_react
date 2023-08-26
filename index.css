@@ -55,11 +55,12 @@
     padding:5px;
     margin: 18px;
     width:180px;
-    height: 320px;
+   
 }
 .res-card:hover{
     border: solid black;
     cursor: pointer;
+  
 }
 .res-logo{
     width: 100%;
