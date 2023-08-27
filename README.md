@@ -29,4 +29,11 @@
  
  # two type of exports 
  --> default export 
- --> named export
+ --> named export 
+
+  # hook function = normal javascript utility function
+   some important hooks 
+  ->useState() //
+  ->useEffect()
+
+  
