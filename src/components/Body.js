@@ -1,6 +1,7 @@
 import Restaurant_card from "./Restaurant_card";
-import reslist from "../utilis/mockdata";
+
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 const Body = () => {
   // super powerful react state variable
 
@@ -18,7 +19,8 @@ const Body = () => {
     setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
 
-  return (
+ 
+  return listOfrestaurants.length === 0 ? <Shimmer /> :(
     <div className="body">
       <div className="Search">
         <input type="text" />
