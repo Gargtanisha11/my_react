@@ -36,4 +36,5 @@
   ->useState() //
   ->useEffect()
 
-  
+  # how ui take data from live api 
+  using fetch function in useEffect hook 
