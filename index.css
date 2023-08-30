@@ -27,17 +27,17 @@
 
 }
 
-.Search{
+/* .Search{
     border: solid black;
     width: fit-content;
     height : fit-content;
-}
-.Search input{
+} */
+/* .Search input{
     padding: 10px 10px 10px 10px;
     margin: 10px;
    height:20px ;
-}
-.Search button {
+} */
+.filter-btn {
    
     
     margin: 10px;
