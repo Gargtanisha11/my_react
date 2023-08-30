@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utilis/constant";
 export const Header = () => {
   const [headButton, setHeadButton] = useState(["LOGIN"]);
-
+  
+  useEffect(()=>{
+    console.log("useEffect")
+  },[headButton]);
   return (
     <div className="header">
       <div className="logo">
@@ -29,5 +32,5 @@ export const Header = () => {
     </div>
   );
 };
-
+ 
 export default Header;

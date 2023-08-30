@@ -35,10 +35,7 @@ const Body = () => {
           value={searchText}
           onChange={(e) => {
             setSearchTex(e.target.value);
-            const filteredList = listOfrestaurants.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
-            );
-            setFilteredRestaurant(filteredList);
+           
           }}
         />
         <button
