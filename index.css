@@ -49,21 +49,23 @@
     
 }
 .res-card{
-    
+   
     background-color: #f0f0f0;
     padding:5px;
     margin: 18px;
     width:180px;
+    
    
 }
 .res-card:hover{
     border: solid black;
     cursor: pointer;
-  
+    
 }
 .res-logo{
     width: 100%;
     height: 118px;
+    
 }
 .shimmer-container{
  display: flex;
@@ -101,4 +103,8 @@
     background-color: green;
     color: white;
     cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: #333;
 }

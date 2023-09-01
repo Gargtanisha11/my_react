@@ -1,7 +1,8 @@
 import Restaurant_card from "./Restaurant_card";
-
+import { SWIGGY_API } from "../utilis/constant";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+
 const Body = () => {
   // super powerful react state variable
 
@@ -15,16 +16,18 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+     SWIGGY_API
     );
     const json = await data.json();
     setListOfRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurant(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
-  return listOfrestaurants.length === 0 ? (
+  return listOfrestaurants.lenght === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -35,13 +38,12 @@ const Body = () => {
           value={searchText}
           onChange={(e) => {
             setSearchTex(e.target.value);
-           
           }}
         />
         <button
           onClick={() => {
             console.log("button clicked");
-
+          
             const filteredList = listOfrestaurants.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
             );
@@ -64,7 +66,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <Restaurant_card resData={restaurant} key={restaurant.info.id} />
+          <Restaurant_card resData={restaurant} key={restaurant.info.id} /> 
         ))}
       </div>
     </div>
