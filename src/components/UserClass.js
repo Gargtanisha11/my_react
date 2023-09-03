@@ -8,11 +8,12 @@ class UserClass extends React.Component {
   componentDidMount() {
   }
   render() {
-    const { name, job, city } = this.props;
+    const { name, job, city,img } = this.props;
     const { count } = this.state;
     console.log("Render  Child");
     return (
       <div className="user-card">
+        <img src={img} alt="" />
         <h1>Name- {name}</h1>
         <h3>{city}</h3>
         <h3> {job}</h3>
