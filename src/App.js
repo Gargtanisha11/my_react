@@ -4,9 +4,9 @@ import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
 
 import Header from "./components/Headers";
 import Body from "./components/Body";
-import About from "./components/about";
+import About from "./components/About";
 import Contact from "./components/Contact";
-import ErrorPage from "./components/ErrorPaage";
+import ErrorPage from "./components/ErrorPage";
 import Restaurant from "./components/Restaurant";
 
 const AppLayout = () => {
