@@ -70,4 +70,10 @@ increase user expericence
     -> pass props normally as in functional component
     -> but for recieve in class-based  component. There is constructor who take as argument 
      and in constructor we use super(props) keyword
-     after that we can use it anywhere by written like this (this.props)     
+     after that we can use it anywhere by written like this (this.props)  
+# dynamic bundling 
+ lazy function from react
+ suspense component from react
+
+# custom hooks
+we can make our custom hook  for ease of use and modularity in our component 

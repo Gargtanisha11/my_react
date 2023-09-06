@@ -6,30 +6,19 @@ import useListOfRestaurant from "../utilis/useListOfRestaurant";
 import useOnlineStatus from "../utilis/useOnlineStatus";
 import Shimmer from "./Shimmer";
 
-const Body = () => {
-  // super powerful react state variable
-  const [listOfrestaurants, setListOfRestaurants] = useState([]);
+const Body2 = () => {
+  const listOfrestaurants = useListOfRestaurant(SWIGGY_API);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+
   const [searchText, setSearchTex] = useState([]);
   useEffect(() => {
-    fecthdata();
-  }, []);
+    setFilteredRestaurant(listOfrestaurants);
+  }, [listOfrestaurants]);
 
-  const fecthdata = async () => {
-    const data = await fetch(SWIGGY_API);
-    const json = await data.json();
-    setListOfRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    console.log(listOfrestaurants);
-  };
-  // setListOfRestaurants(useListOfRestaurant(SWIGGY_API));
-  // setFilteredRestaurant(listOfrestaurants);
   const onlineStatus = useOnlineStatus();
+
   if (onlineStatus === false) return <h1> please check internet connection</h1>;
+
   if (listOfrestaurants.length === 0) {
     return <Shimmer />;
   }
@@ -46,8 +35,6 @@ const Body = () => {
         />
         <button
           onClick={() => {
-            console.log("button clicked");
-
             const filteredList = listOfrestaurants.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
             );
@@ -69,17 +56,11 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {/* {filteredRestaurant && filteredRestaurant.length > 0 ? ( */}
-        {
-          filteredRestaurant.map((restaurant) => (
-            <Restaurant_card resData={restaurant} key={restaurant?.info?.id} />
-          ))
-          // ) : (
-          //   <p>No restaurants found.</p>
-          // )
-        }
+        {filteredRestaurant.map((restaurant) => (
+          <Restaurant_card resData={restaurant} key={restaurant?.info?.id} />
+        ))}
       </div>
     </div>
   );
 };
-export default Body;
+export default Body2;
