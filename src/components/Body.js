@@ -71,7 +71,8 @@ const Body = () => {
       <div className="res-container">
         {/* {filteredRestaurant && filteredRestaurant.length > 0 ? ( */}
         {
-          filteredRestaurant.map((restaurant) => (
+          filteredRestaurant.map((restaurant) => ( 
+            
             <Restaurant_card resData={restaurant} key={restaurant?.info?.id} />
           ))
           // ) : (

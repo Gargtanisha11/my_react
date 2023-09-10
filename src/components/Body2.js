@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Restaurant_card from "./Restaurant_card";
+import Restaurant_card, { withPromoted } from "./Restaurant_card";
 import { SWIGGY_API } from "../utilis/constant";
 import useListOfRestaurant from "../utilis/useListOfRestaurant";
 import useOnlineStatus from "../utilis/useOnlineStatus";
@@ -11,6 +11,8 @@ const Body2 = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText, setSearchTex] = useState([]);
+
+  const RestaurantPromotedCard= withPromoted(Restaurant_card);
   useEffect(() => {
     setFilteredRestaurant(listOfrestaurants);
   }, [listOfrestaurants]);
@@ -23,17 +25,17 @@ const Body2 = () => {
     return <Shimmer />;
   }
   return (
-    <div className="body">
+    <div className="body  mx-4">
       <div className="Search">
         <input
           type="text"
-          className="search-box"
+          className="search-box my-4 px-1 border border-solid border-stone-700 rounded-md"
           value={searchText}
           onChange={(e) => {
             setSearchTex(e.target.value);
           }}
         />
-        <button
+        <button className="search-button mx-4 px-2 bg-slate-400 rounded-lg  text-white  h-8"
           onClick={() => {
             const filteredList = listOfrestaurants.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -41,10 +43,10 @@ const Body2 = () => {
             setFilteredRestaurant(filteredList);
           }}
         >
-          Search
+         🔍
         </button>
         <button
-          className="filter-btn"
+          className="filter-btn mx-4 bg-emerald-700 rounded-lg text-white w-56 h-8"
           onClick={() => {
             const list = listOfrestaurants.filter(
               (res) => res.info.avgRating > 4
@@ -55,10 +57,14 @@ const Body2 = () => {
           Top Rated Restaurant
         </button>
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {filteredRestaurant.map((restaurant) => (
-          <Restaurant_card resData={restaurant} key={restaurant?.info?.id} />
-        ))}
+           restaurant.info.avgRating >= 4.2
+            ? (<RestaurantPromotedCard resData={restaurant} key={restaurant?.info?.id}/>) 
+          :  (<Restaurant_card resData={restaurant} key={restaurant?.info?.id} />)
+                       
+                       ))
+          }
       </div>
     </div>
   );

@@ -8,19 +8,28 @@ const Restaurant_card = (props) => {
   const { deliveryTime } = resData?.info.sla;
   return (
     <Link to={"/restaurants/" + id}>
-      <div className="res-card">
+      <div className="res-card bg-slate-300 p-2 m-2 w-60 h-auto rounded-md">
         <img
-          className="res-logo"
+          className="res-logo w-56 h-36 rounded-md"
           alt="res-logo"
           src={CDN_URL + cloudinaryImageId}
         />
-        <h3>{name}</h3>
-        <h4>{cuisines.join(" , ")}</h4>
-        <h4>{avgRating} stars</h4>
-        <h4>{costForTwo}</h4>
-        <h4>{deliveryTime} minutes</h4>
+        <h3 className="text-xl font-bold py-4">{name}</h3>
+        <h4 className=" py-1">{cuisines.join(" , ")}</h4>
+        <h4 className=" py-1">{avgRating}⭐</h4>
+        <h4 className=" py-1">{costForTwo}</h4>
+        <h4 className=" py-1">{deliveryTime} minutes</h4>
       </div>
     </Link>
   );
 };
+
+ export const withPromoted =(Restaurant_card)=>{
+  return (props)=>{
+    return <div>
+      <label className="absolute z-20 bg-black text-white rounded-md m-2 p-2"> Promoted</label>
+      <Restaurant_card {...props}/>
+    </div>
+  }
+ }
 export default Restaurant_card;

@@ -14,7 +14,7 @@ const useListOfRestaurant = (Api) => {
     setListOfRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    console.log(json);
+    
   };
   return listOfrestaurants;
 };

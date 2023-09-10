@@ -7,11 +7,11 @@ import Body2 from "./components/Body2";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import ErrorPage from "./components/ErrorPage";
-import Restaurant from "./components/Restaurant";
+// import Restaurant from "./components/Restaurant";
 
 
 const Grocery = lazy(()=> import("./components/Grocery"));
-
+ const Restaurant= lazy(()=>import("./components/Restaurant"));
 const AppLayout = () => {
   return (
     <div className="Applayout">
@@ -39,7 +39,7 @@ const appRoute = createBrowserRouter([
       },
       {
         path:"/restaurants/:resId",
-        element: <Restaurant />
+        element: (<Suspense fallback={<h1>Loading.....</h1>}><Restaurant /></Suspense>)
       },
       {
          path:"/grocery",
