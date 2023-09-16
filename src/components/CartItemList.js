@@ -1,14 +1,15 @@
 import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utilis/constant";
-import { addItem } from "../utilis/redux/cartSlice";
+import { addItem, removeItem } from "../utilis/redux/cartSlice";
 
-const ItemList = ({ itemCards }) => {
+const CartItemList = ({ itemCards }) => {
+  const dispatch = useDispatch();
 
-  const dispatch=useDispatch();
-
-  const handleAddItem=()=>{
-     dispatch(addItem(itemCards));
+  const handleRemoveItem=()=>{
+    dispatch(removeItem(itemCards.card.info.id))
+    
   }
+
   return (
     <div className="border border-b-2 border-t-0 border-r-0 border-l-0 text-left flex justify-between my-10 pb-5 ">
       <ul className="w-9/12">
@@ -24,18 +25,17 @@ const ItemList = ({ itemCards }) => {
         <li className="text-sm">{itemCards.card.info.description}</li>
       </ul>
       <div className="w-3/12 pl-16 relative ">
-        
         <img
           className=" rounded-md h-28"
           src={CDN_URL + itemCards.card.info.imageId}
           alt=""
         />
-        <button className="absolute z-10 ml-5 mb-0 -bottom-4 py-2 rounded-lg w-20 text-green-700 bg-white border border-slate-300  " onClick={handleAddItem}>
+        <button className="absolute z-10 ml-5 mb-0 -bottom-4 py-2 rounded-lg w-20 text-green-700 bg-white border border-slate-300  " onClick={handleRemoveItem}>
         
-          ADD+
-        </button>
+        REMOVE-
+      </button>
       </div>
     </div>
   );
 };
-export default ItemList;
+export default CartItemList;

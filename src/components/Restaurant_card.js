@@ -1,13 +1,18 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utilis/constant";
 import { Link } from "react-router-dom";
+import UserContext from "../utilis/UserContext";
 
 const Restaurant_card = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, id } =
     resData?.info;
   const { deliveryTime } = resData?.info.sla;
+
+  const data=useContext(UserContext);
+
   return (
-    <Link to={"/restaurants/" + id}>
+    // <Link to={"/restaurants/" + id}>
       <div className="res-card bg-slate-300 p-2 m-2 w-60 h-auto rounded-md">
         <img
           className="res-logo w-56 h-36 rounded-md"
@@ -19,8 +24,9 @@ const Restaurant_card = (props) => {
         <h4 className=" py-1">{avgRating}⭐</h4>
         <h4 className=" py-1">{costForTwo}</h4>
         <h4 className=" py-1">{deliveryTime} minutes</h4>
+       
       </div>
-    </Link>
+    // </Link>
   );
 };
 

@@ -67,6 +67,7 @@ const Body = () => {
         >
           Top Rated Restaurant
         </button>
+        <input type="text" className="border border-black" />
       </div>
       <div className="res-container">
         {/* {filteredRestaurant && filteredRestaurant.length > 0 ? ( */}

@@ -1,16 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import Restaurant_card, { withPromoted } from "./Restaurant_card";
 import { SWIGGY_API } from "../utilis/constant";
-import useListOfRestaurant from "../utilis/useListOfRestaurant";
-import useOnlineStatus from "../utilis/useOnlineStatus";
+import useListOfRestaurant from "../utilis/hooks/useListOfRestaurant";
+import useOnlineStatus from "../utilis/hooks/useOnlineStatus";
 import Shimmer from "./Shimmer";
+import UserContext from "../utilis/UserContext";
 
 const Body2 = () => {
   const listOfrestaurants = useListOfRestaurant(SWIGGY_API);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText, setSearchTex] = useState([]);
+
+  const[userText,setUserText]= useState([]);
+
+  const dataName = useContext(UserContext);
 
   const RestaurantPromotedCard= withPromoted(Restaurant_card);
   useEffect(() => {
@@ -56,12 +62,20 @@ const Body2 = () => {
         >
           Top Rated Restaurant
         </button>
+        <input type="text" className="search-box my-4 px-1 border border-solid border-stone-700 rounded-md" value={userText} onChange={(e)=>{
+         setUserText(e.target.value)
+        }}/>
+         <button className="user-Text-button mx-4 px-2 bg-slate-400 rounded-lg  text-white  h-8"
+          onClick={() => {
+            dataName.setUserName(userText);
+          }}
+        >Change User Name</button>
       </div>
       <div className="res-container flex flex-wrap">
         {filteredRestaurant.map((restaurant) => (
            restaurant.info.avgRating >= 4.2
-            ? (<RestaurantPromotedCard resData={restaurant} key={restaurant?.info?.id}/>) 
-          :  (<Restaurant_card resData={restaurant} key={restaurant?.info?.id} />)
+            ? <Link to={"/restaurants/" + restaurant?.info?.id} key={restaurant?.info?.id}> <RestaurantPromotedCard resData={restaurant} /></Link> 
+          :  <Link to={"/restaurants/" + restaurant?.info?.id} key={restaurant?.info?.id}><Restaurant_card resData={restaurant} /> </Link>
                        
                        ))
           }

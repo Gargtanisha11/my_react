@@ -1,3 +1,4 @@
+import UserContext from "../utilis/UserContext";
 import User from "./User";
 import UserClass from "./UserClass";
 import React from "react";
@@ -27,7 +28,7 @@ class About extends React.Component {
       <div>
         <h1> About us</h1>
         <h3> this is practice project for React</h3>
-       
+        <UserContext.Consumer>{({loggedInUser})=>(<h1>{loggedInUser}</h1>)}</UserContext.Consumer>
         <UserClass
           name={name}
           city={location}

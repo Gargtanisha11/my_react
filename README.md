@@ -1,9 +1,9 @@
-# yes i learn how to push code
+
 
 
 # npm init done 
 
-# we create the fod delivery app 
+# we create the food delivery app 
  user interface 
  component in our app
 
