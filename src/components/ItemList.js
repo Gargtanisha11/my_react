@@ -9,6 +9,7 @@ const ItemList = ({ itemCards }) => {
   const handleAddItem=()=>{
      dispatch(addItem(itemCards));
   }
+
   return (
     <div className="border border-b-2 border-t-0 border-r-0 border-l-0 text-left flex justify-between my-10 pb-5 ">
       <ul className="w-9/12">

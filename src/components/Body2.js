@@ -14,16 +14,17 @@ const Body2 = () => {
 
   const [searchText, setSearchTex] = useState([]);
 
-  const[userText,setUserText]= useState([]);
+  const [userText, setUserText] = useState([]);
 
   const dataName = useContext(UserContext);
 
-  const RestaurantPromotedCard= withPromoted(Restaurant_card);
+  const RestaurantPromotedCard = withPromoted(Restaurant_card);
   useEffect(() => {
     setFilteredRestaurant(listOfrestaurants);
   }, [listOfrestaurants]);
 
   const onlineStatus = useOnlineStatus();
+
 
   if (onlineStatus === false) return <h1> please check internet connection</h1>;
 
@@ -35,13 +36,15 @@ const Body2 = () => {
       <div className="Search">
         <input
           type="text"
+          data-testid ="searchInput"
           className="search-box my-4 px-1 border border-solid border-stone-700 rounded-md"
           value={searchText}
           onChange={(e) => {
             setSearchTex(e.target.value);
           }}
         />
-        <button className="search-button mx-4 px-2 bg-slate-400 rounded-lg  text-white  h-8"
+        <button
+           data-testid ="search" className="search-button mx-4 px-2 bg-slate-400 rounded-lg  text-white  h-8"
           onClick={() => {
             const filteredList = listOfrestaurants.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -49,9 +52,10 @@ const Body2 = () => {
             setFilteredRestaurant(filteredList);
           }}
         >
-         🔍
+          🔍
         </button>
         <button
+        data-testid="top_rated_restaurant "
           className="filter-btn mx-4 bg-emerald-700 rounded-lg text-white w-56 h-8"
           onClick={() => {
             const list = listOfrestaurants.filter(
@@ -62,23 +66,42 @@ const Body2 = () => {
         >
           Top Rated Restaurant
         </button>
-        <input type="text" className="search-box my-4 px-1 border border-solid border-stone-700 rounded-md" value={userText} onChange={(e)=>{
-         setUserText(e.target.value)
-        }}/>
-         <button className="user-Text-button mx-4 px-2 bg-slate-400 rounded-lg  text-white  h-8"
+        <input
+          type="text"
+          className="search-box my-4 px-1 border border-solid border-stone-700 rounded-md"
+          value={userText}
+          onChange={(e) => {
+            setUserText(e.target.value);
+          }}
+        />
+        <button
+          className="user-Text-button mx-4 px-2 bg-slate-400 rounded-lg  text-white  h-8"
           onClick={() => {
             dataName.setUserName(userText);
           }}
-        >Change User Name</button>
+        >
+          Change User Name
+        </button>
       </div>
       <div className="res-container flex flex-wrap">
-        {filteredRestaurant.map((restaurant) => (
-           restaurant.info.avgRating >= 4.2
-            ? <Link to={"/restaurants/" + restaurant?.info?.id} key={restaurant?.info?.id}> <RestaurantPromotedCard resData={restaurant} /></Link> 
-          :  <Link to={"/restaurants/" + restaurant?.info?.id} key={restaurant?.info?.id}><Restaurant_card resData={restaurant} /> </Link>
-                       
-                       ))
-          }
+        {filteredRestaurant.map((restaurant) =>
+          restaurant.info.avgRating >= 4.2 ? (
+            <Link
+              to={"/restaurants/" + restaurant?.info?.id}
+              key={restaurant?.info?.id}
+            >
+              {" "}
+              <RestaurantPromotedCard resData={restaurant} />
+            </Link>
+          ) : (
+            <Link
+              to={"/restaurants/" + restaurant?.info?.id}
+              key={restaurant?.info?.id}
+            >
+              <Restaurant_card resData={restaurant} />{" "}
+            </Link>
+          )
+        )}
       </div>
     </div>
   );

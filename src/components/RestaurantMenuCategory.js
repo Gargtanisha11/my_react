@@ -26,9 +26,11 @@ const RestaurantMenuCategory = ({ itemscategory ,showItem,setShowIndex,funct}) =
  useEffect(()=>{
    showItem === true ? setBtn("🔼") :setBtn("🔽");
  })
+
+
   return (
     <div className="  bg-slate-50 shadow-xl m-8 p-2">
-      <div className="flex justify-between" onClick={handleClick}>
+      <div  data-testid="menu-card"className="flex justify-between" onClick={handleClick}>
         <h1 className="font-semibold text-xl py-3">
           {itemscategory.card.card.title}
         </h1>

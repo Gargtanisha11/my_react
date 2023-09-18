@@ -13,7 +13,7 @@ const Restaurant_card = (props) => {
 
   return (
     // <Link to={"/restaurants/" + id}>
-      <div className="res-card bg-slate-300 p-2 m-2 w-60 h-auto rounded-md">
+      <div className="res-card bg-slate-300 p-2 m-2 w-60 h-auto rounded-md" data-testid="res_card">
         <img
           className="res-logo w-56 h-36 rounded-md"
           alt="res-logo"

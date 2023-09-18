@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 import Restaurant_card from "./Restaurant_card";
 import { SWIGGY_API } from "../utilis/constant";
-import useListOfRestaurant from "../utilis/useListOfRestaurant";
-import useOnlineStatus from "../utilis/useOnlineStatus";
+
+import useOnlineStatus from "../utilis/hooks/useOnlineStatus";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
@@ -28,6 +28,7 @@ const Body = () => {
   };
   // setListOfRestaurants(useListOfRestaurant(SWIGGY_API));
   // setFilteredRestaurant(listOfrestaurants);
+  console.log(listOfrestaurants.length());
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false) return <h1> please check internet connection</h1>;
   if (listOfrestaurants.length === 0) {

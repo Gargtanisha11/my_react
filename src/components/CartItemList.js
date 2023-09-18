@@ -11,7 +11,7 @@ const CartItemList = ({ itemCards }) => {
   }
 
   return (
-    <div className="border border-b-2 border-t-0 border-r-0 border-l-0 text-left flex justify-between my-10 pb-5 ">
+    <div data-testid="cart-items" className="border border-b-2 border-t-0 border-r-0 border-l-0 text-left flex justify-between my-10 pb-5 ">
       <ul className="w-9/12">
         <li className=" font-medium text-lg py-2">
           {itemCards.card.info.name}
