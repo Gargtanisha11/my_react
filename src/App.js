@@ -18,16 +18,17 @@ const Restaurant = lazy(() => import("./components/Restaurant"));
 
 const AppLayout = () => {
   const [userName, setUserName] = useState(null);
-
+  const [theme, setTheme] =useState(null)
   useEffect(() => {
     const data = "Tanisha Garg";
     setUserName("Tanisha Garg");
+    setTheme(true);
   }, []);
 
   return (
     <Provider store={appStore}>
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="Applayout">
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName, darkTheme: theme,setTheme }}>
+      <div className="Applayout ">
         <Header />
         <Outlet />
         <Footer />

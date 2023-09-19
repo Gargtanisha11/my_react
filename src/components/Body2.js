@@ -16,7 +16,7 @@ const Body2 = () => {
 
   const [userText, setUserText] = useState([]);
 
-  const dataName = useContext(UserContext);
+  const data = useContext(UserContext);
 
   const RestaurantPromotedCard = withPromoted(Restaurant_card);
   useEffect(() => {
@@ -32,7 +32,7 @@ const Body2 = () => {
     return <Shimmer />;
   }
   return (
-    <div className="body  mx-4">
+    <div className= {data.darkTheme ? " p-3 bg-slate-400 text-slate-800":"body  mx-4 "}>
       <div className="Search">
         <input
           type="text"
@@ -44,7 +44,7 @@ const Body2 = () => {
           }}
         />
         <button
-           data-testid ="search" className="search-button mx-4 px-2 bg-slate-400 rounded-lg  text-white  h-8"
+           data-testid ="search" className="search-button mx-4 px-2 bg-slate-600 rounded-lg  text-white  h-8"
           onClick={() => {
             const filteredList = listOfrestaurants.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -56,7 +56,7 @@ const Body2 = () => {
         </button>
         <button
         data-testid="top_rated_restaurant "
-          className="filter-btn mx-4 bg-emerald-700 rounded-lg text-white w-56 h-8"
+          className="filter-btn mx-4 bg-slate-600 rounded-lg text-white w-56 h-8"
           onClick={() => {
             const list = listOfrestaurants.filter(
               (res) => res.info.avgRating > 4
@@ -75,9 +75,9 @@ const Body2 = () => {
           }}
         />
         <button
-          className="user-Text-button mx-4 px-2 bg-slate-400 rounded-lg  text-white  h-8"
+          className="user-Text-button mx-4 px-2 bg-slate-600 rounded-lg  text-white  h-8"
           onClick={() => {
-            dataName.setUserName(userText);
+            data.setUserName(userText);
           }}
         >
           Change User Name

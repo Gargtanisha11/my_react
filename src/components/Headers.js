@@ -19,12 +19,14 @@ export const Header = () => {
   useEffect(()=>{
     // console.log("useEffect")
   },[headButton]);
-
+  const handleDarKTheme =()=>{
+     data.darkTheme ? data.setTheme(false) :data.setTheme(true);
+  }
  
   return (
-    <div className="flex justify-between bg-slate-200 shadow-2xl ">
-      <div className="w-40 ">
-        <img className="" src={LOGO_URL} alt=" i am not here" />
+    <div className={ data.darkTheme ? "flex justify-between bg-slate-800 text-slate-50 shadow-2xl":"flex justify-between bg-slate-200 shadow-2xl "}>
+      <div className=" w-48 ">
+        <img className="h-full" src={LOGO_URL} alt=" i am not here" />
       </div>
       <div className="nav-items text-2xl content-center px-2">
         <ul className="flex  m-10 content-center  ">
@@ -35,8 +37,9 @@ export const Header = () => {
           <li className="my-5 mx-3"><Link to ="/Grocery">Grocery</Link></li>
           <li className="my-5 mx-3 text-2xl" data-testid="cart"><Link to="./cart">🛒({cartItems.length}items)</Link></li>
           <li className="my-5 mx-3  "> {data.loggedInUser}</li>
+          <button className="my-5 mx-3 bg-slate-600 text-white w-28 h-12 rounded-xl" onClick={handleDarKTheme}>Dark</button>
           <button
-             className=" my-4 mx-2 bg-emerald-700 text-white w-28 h-12 rounded-s-lg "
+             className=" my-5 mx-3 bg-slate-600 text-white w-28 h-12 rounded-lg "
             onClick={() => {
               headButton == "LOGIN"
                 ? setHeadButton("LOGOUT")
